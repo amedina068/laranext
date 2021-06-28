@@ -2,6 +2,7 @@ import Router from 'next/router';
 import { useForm } from "react-hook-form";
 import { useAuth } from '../libs/auth'
 import cookie from 'js-cookie';
+import { AuthProvider } from '../libs/auth';
 
 export default function Register() {
   if (process.browser && cookie.get('firebase-auth')) {
@@ -15,7 +16,8 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex">
+    <AuthProvider>
+      <div className="min-h-screen bg-white flex">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div>
@@ -105,5 +107,6 @@ export default function Register() {
         />
       </div>
     </div>
+    </AuthProvider>
   )
 }
