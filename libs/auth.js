@@ -25,7 +25,7 @@ function useProvideAuth() {
 
       createUser(user.uid, userWithoutToken);
       setUser(user);
-      cookie.set('firebase-auth', true, {
+      cookie.set('next-auth', true, {
         expires: 1
       });
 
@@ -33,7 +33,7 @@ function useProvideAuth() {
       return user;
     } else {
       setUser(false)
-      cookie.remove('firebase-auth');
+      cookie.remove('next-auth');
 
       setLoading(false);
       return false;
